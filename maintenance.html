@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>设施设备运维管理系统 - 高保真原型</title>
+  <link rel="stylesheet" href="css/style.css?v=device-detail-tab-v7">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand brand-home-link maintenance-brand" href="index.html" title="返回智慧园区管理平台门户">
+        <div class="brand-mark maintenance-mark">维</div>
+        <div><strong>设施设备运维管理系统</strong><span>FACILITY OPERATIONS CENTER</span></div>
+      </a>
+      <div class="topbar-center">
+        <button class="park-switch">微冷园区 <span>⌄</span></button>
+        <div class="global-search"><span>⌕</span><input placeholder="搜索设备编码、资产编码、工单编号"><kbd>⌘ K</kbd></div>
+      </div>
+      <div class="top-actions">
+        <button class="icon-button" title="待办">✓<i>12</i></button>
+        <button class="icon-button" title="消息">◉<i>5</i></button>
+        <button class="icon-button" title="帮助">?</button>
+        <div class="user"><span class="avatar">李</span><div><b>李明</b><small>运维主管</small></div><span>⌄</span></div>
+      </div>
+    </header>
+    <aside class="sidebar">
+      <div class="side-caption">设施设备运维</div>
+      <nav id="opsMenu"></nav>
+      <div class="side-footer"><div class="health-dot"></div><div><b>运维服务正常</b><span>流程任务同步正常</span></div></div>
+    </aside>
+    <main class="main">
+      <div class="breadcrumb" id="opsBreadcrumb">设施设备运维管理系统 / 仓库管理 / 设备类型管理</div>
+      <section id="opsPage"></section>
+      <footer>设施设备运维管理系统评审原型 · 数据更新时间 2026-06-10 14:30:16</footer>
+    </main>
+  </div>
+  <div class="overlay" id="opsDrawerOverlay">
+    <aside class="drawer wide">
+      <div class="drawer-head"><div><span class="eyebrow">DETAIL</span><h2 id="opsDrawerTitle">详情</h2></div><button class="close-btn" data-close="drawer">×</button></div>
+      <div class="drawer-tabs" id="opsDrawerTabs"></div>
+      <div class="drawer-body" id="opsDrawerBody"></div>
+      <div class="drawer-foot"><button class="btn" data-close="drawer">关闭</button></div>
+    </aside>
+  </div>
+  <div class="overlay" id="planDrawerOverlay">
+    <aside class="drawer plan-drawer">
+      <div class="drawer-head plan-drawer-head"><div><span class="eyebrow">INSPECTION PLAN</span><h2>新增巡检计划</h2></div><button class="close-btn" data-close="planDrawer">×</button></div>
+      <div class="drawer-body plan-drawer-body" id="planDrawerBody"></div>
+      <div class="drawer-foot plan-drawer-foot"><button class="btn" data-close="planDrawer">取消</button><button class="btn primary" id="planDrawerConfirm">确定</button></div>
+    </aside>
+  </div>
+  <div class="overlay" id="taskDetailDrawerOverlay">
+    <aside class="drawer task-detail-drawer">
+      <div class="drawer-head task-detail-head"><div><span class="eyebrow">INSPECTION TASK</span><h2>巡检任务详情</h2></div><button class="close-btn" data-close="taskDetailDrawer">×</button></div>
+      <div class="drawer-body task-detail-body" id="taskDetailDrawerBody"></div>
+      <div class="drawer-foot task-detail-foot"><button class="btn" data-close="taskDetailDrawer">取消</button><button class="btn primary" data-close="taskDetailDrawer">确定</button></div>
+    </aside>
+  </div>
+  <div class="overlay" id="checkTemplateDrawerOverlay">
+    <aside class="drawer check-template-drawer">
+      <div class="drawer-head check-template-head"><div><span class="eyebrow">MAINTENANCE TEMPLATE</span><h2>新增检查项模板</h2></div><button class="close-btn" data-close="checkTemplateDrawer">×</button></div>
+      <div class="drawer-body check-template-body" id="checkTemplateDrawerBody"></div>
+      <div class="drawer-foot check-template-foot"><button class="btn" data-close="checkTemplateDrawer">取消</button><button class="btn primary" id="checkTemplateConfirm">确定</button></div>
+    </aside>
+  </div>
+  <div class="overlay" id="maintenancePlanDrawerOverlay">
+    <aside class="drawer maintenance-plan-drawer">
+      <div class="drawer-head maintenance-plan-head"><div><span class="eyebrow">MAINTENANCE PLAN</span><h2>新增保养计划</h2></div><button class="close-btn" data-close="maintenancePlanDrawer">×</button></div>
+      <div class="drawer-body maintenance-plan-body" id="maintenancePlanDrawerBody"></div>
+      <div class="drawer-foot maintenance-plan-foot"><button class="btn" data-close="maintenancePlanDrawer">取消</button><button class="btn primary" id="maintenancePlanConfirm">确定</button></div>
+    </aside>
+  </div>
+  <div class="overlay subdrawer-overlay" id="maintenanceDeviceDrawerOverlay">
+    <aside class="drawer maintenance-device-drawer">
+      <div class="drawer-head maintenance-device-head"><div><span class="eyebrow">SELECT DEVICES</span><h2>新增设备</h2></div><button class="close-btn" data-close="maintenanceDeviceDrawer">×</button></div>
+      <div class="drawer-body maintenance-device-body" id="maintenanceDeviceDrawerBody"></div>
+      <div class="drawer-foot maintenance-device-foot"><button class="btn" data-close="maintenanceDeviceDrawer">取消</button><button class="btn primary" id="maintenanceDeviceConfirm">确定</button></div>
+    </aside>
+  </div>
+  <div class="overlay subdrawer-overlay" id="inventoryCheckItemDrawerOverlay">
+    <aside class="drawer subdrawer inventory-check-item-drawer">
+      <div class="drawer-head inventory-check-item-head"><div><span class="eyebrow">INVENTORY ITEM</span><h2 id="inventoryCheckItemTitle">盘点项详情</h2></div><button class="close-btn" data-close="inventoryCheckItem">×</button></div>
+      <div class="drawer-body inventory-check-item-body" id="inventoryCheckItemBody"></div>
+      <div class="drawer-foot inventory-check-item-foot"><button class="btn" data-close="inventoryCheckItem">关闭</button></div>
+    </aside>
+  </div>
+  <div class="overlay subdrawer-overlay" id="equipmentTemplateDetailOverlay">
+    <aside class="drawer subdrawer equipment-template-detail-drawer">
+      <div class="drawer-head equipment-template-detail-head"><div><span class="eyebrow">MAINTENANCE TEMPLATE</span><h2 id="equipmentTemplateDetailTitle">检查项模板详情</h2></div><button class="close-btn" data-close="equipmentTemplateDetail">×</button></div>
+      <div class="drawer-body equipment-template-detail-body" id="equipmentTemplateDetailBody"></div>
+      <div class="drawer-foot equipment-template-detail-foot"><button class="btn" data-close="equipmentTemplateDetail">关闭</button></div>
+    </aside>
+  </div>
+  <div class="overlay" id="maintenancePlanDetailOverlay">
+    <aside class="drawer maintenance-plan-detail-drawer">
+      <div class="drawer-head maintenance-plan-detail-head"><div><span class="eyebrow">MAINTENANCE PLAN</span><h2>保养计划详情</h2></div><button class="close-btn" data-close="maintenancePlanDetail">×</button></div>
+      <div class="drawer-body maintenance-plan-detail-body" id="maintenancePlanDetailBody"></div>
+      <div class="drawer-foot maintenance-plan-detail-foot"><button class="btn primary" data-close="maintenancePlanDetail">确定</button></div>
+    </aside>
+  </div>
+  <div class="overlay" id="maintenanceTaskDrawerOverlay">
+    <aside class="drawer maintenance-task-drawer">
+      <div class="drawer-head maintenance-task-head"><div><span class="eyebrow">MAINTENANCE TASK</span><h2>新增维保任务</h2></div><button class="close-btn" data-close="maintenanceTaskDrawer">×</button></div>
+      <div class="drawer-body maintenance-task-body" id="maintenanceTaskDrawerBody"></div>
+      <div class="drawer-foot maintenance-task-foot"><button class="btn" data-close="maintenanceTaskDrawer">取消</button><button class="btn primary" id="maintenanceTaskConfirm">确定</button></div>
+    </aside>
+  </div>
+  <div class="overlay" id="maintenanceTaskDetailOverlay">
+    <aside class="drawer maintenance-task-detail-drawer">
+      <div class="drawer-head maintenance-task-detail-head"><div><span class="eyebrow">MAINTENANCE TASK</span><h2>保养任务详情</h2></div><button class="close-btn" data-close="maintenanceTaskDetail">×</button></div>
+      <div class="drawer-body maintenance-task-detail-body" id="maintenanceTaskDetailBody"></div>
+      <div class="drawer-foot maintenance-task-detail-foot"><button class="btn" data-close="maintenanceTaskDetail">取消</button><button class="btn primary" data-close="maintenanceTaskDetail">确定</button></div>
+    </aside>
+  </div>
+  <div class="overlay subdrawer-overlay" id="maintenanceEquipmentDetailOverlay">
+    <aside class="drawer maintenance-equipment-detail-drawer">
+      <div class="drawer-head maintenance-equipment-detail-head"><div><span class="eyebrow">EQUIPMENT MAINTENANCE</span><h2>设备保养详情</h2></div><button class="close-btn" data-close="maintenanceEquipmentDetail">×</button></div>
+      <div class="drawer-body maintenance-equipment-detail-body" id="maintenanceEquipmentDetailBody"></div>
+      <div class="drawer-foot maintenance-equipment-detail-foot"><button class="btn" data-close="maintenanceEquipmentDetail">取消</button><button class="btn primary" data-close="maintenanceEquipmentDetail">确定</button></div>
+    </aside>
+  </div>
+  <div class="overlay" id="maintenanceWorkorderDetailOverlay">
+    <aside class="drawer maintenance-workorder-detail-drawer">
+      <div class="drawer-head maintenance-workorder-detail-head"><div><span class="eyebrow">MAINTENANCE WORK ORDER</span><h2>保养工单详情</h2></div><button class="close-btn" data-close="maintenanceWorkorderDetail">×</button></div>
+      <div class="drawer-body maintenance-workorder-detail-body" id="maintenanceWorkorderDetailBody"></div>
+      <div class="drawer-foot maintenance-workorder-detail-foot"><button class="btn primary" data-close="maintenanceWorkorderDetail">确定</button></div>
+    </aside>
+  </div>
+  <div class="overlay" id="purchaseInboundDrawerOverlay">
+    <aside class="drawer purchase-inbound-drawer">
+      <div class="drawer-head purchase-inbound-head"><div><span class="eyebrow">PURCHASE INBOUND</span><h2>发起入库申请</h2></div><button class="close-btn" data-close="purchaseInboundDrawer">×</button></div>
+      <div class="drawer-body purchase-inbound-body" id="purchaseInboundDrawerBody"></div>
+      <div class="drawer-foot purchase-inbound-foot"><button class="btn" data-close="purchaseInboundDrawer">取消</button><button class="btn primary" id="purchaseInboundConfirm">提交审批</button></div>
+    </aside>
+  </div>
+  <div class="overlay modal-overlay" id="opsModalOverlay">
+    <section class="modal">
+      <div class="modal-head"><div><span class="eyebrow">OPERATION</span><h2 id="opsModalTitle">操作</h2></div><button class="close-btn" data-close="modal">×</button></div>
+      <div class="modal-body" id="opsModalBody"></div>
+      <div class="modal-foot"><button class="btn" data-close="modal">取消</button><button class="btn primary" id="opsModalConfirm">确认</button></div>
+    </section>
+  </div>
+  <div class="overlay modal-overlay" id="repairDevicePickerOverlay">
+    <section class="modal repair-device-picker-modal">
+      <div class="modal-head"><div><span class="eyebrow">OPERATION</span><h2>选择设备</h2></div><button class="close-btn" data-close="repairDevicePicker">×</button></div>
+      <div class="modal-body" id="repairDevicePickerBody"></div>
+      <div class="modal-foot"><button class="btn" data-close="repairDevicePicker">取消</button><button class="btn primary" id="repairDevicePickerConfirm">确认选择</button></div>
+    </section>
+  </div>
+  <div class="toast-stack" id="opsToastStack"></div>
+  <script src="js/maintenance.js?v=device-detail-tab-v7"></script>
+</body>
+</html>

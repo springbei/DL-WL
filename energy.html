@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>能源管理系统 - 高保真原型</title>
+  <link rel="stylesheet" href="css/style.css?v=energy-alarm-rule-config-9">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand brand-home-link energy-brand" href="index.html" title="返回智慧园区管理平台门户">
+        <div class="brand-mark energy-mark">能</div>
+        <div><strong>能源管理系统</strong><span>ENERGY MANAGEMENT CENTER</span></div>
+      </a>
+      <div class="topbar-center">
+        <button class="park-switch">微冷园区 <span>⌄</span></button>
+        <div class="global-search"><span>⌕</span><input placeholder="搜索表具编号、账单编号、异常编号"><kbd>⌘ K</kbd></div>
+      </div>
+      <div class="top-actions">
+        <button class="icon-button" title="待办">✓<i>9</i></button>
+        <button class="icon-button" title="消息">◉<i>4</i></button>
+        <button class="icon-button" title="帮助">?</button>
+        <div class="user"><span class="avatar">周</span><div><b>周正</b><small>能源管理员</small></div><span>⌄</span></div>
+      </div>
+    </header>
+    <aside class="sidebar">
+      <div class="side-caption">能源管理</div>
+      <nav id="energyMenu"></nav>
+      <div class="side-footer"><div class="health-dot"></div><div><b>能源采集正常</b><span>表具与监测设备同步正常</span></div></div>
+    </aside>
+    <main class="main">
+      <div class="breadcrumb" id="energyBreadcrumb">能源管理系统 / 能源总览 / 能源总览</div>
+      <section id="energyPage"></section>
+      <footer>能源管理系统评审原型 · 数据更新时间 2026-06-11 10:30:16</footer>
+    </main>
+  </div>
+
+  <div class="overlay" id="energyDrawerOverlay">
+    <aside class="drawer energy-drawer">
+      <div class="drawer-head energy-drawer-head"><div><span class="eyebrow">DETAIL</span><h2 id="energyDrawerTitle">详情</h2></div><button class="close-btn" data-close="drawer">×</button></div>
+      <div class="drawer-tabs" id="energyDrawerTabs"></div>
+      <div class="drawer-body energy-drawer-body" id="energyDrawerBody"></div>
+      <div class="drawer-foot"><button class="btn" data-close="drawer">取消</button><button class="btn primary" id="energyDrawerConfirm">确定</button></div>
+    </aside>
+  </div>
+  <div class="overlay modal-overlay" id="energyModalOverlay">
+    <section class="modal energy-modal">
+      <div class="modal-head"><div><span class="eyebrow">OPERATION</span><h2 id="energyModalTitle">操作</h2></div><button class="close-btn" data-close="modal">×</button></div>
+      <div class="modal-body" id="energyModalBody"></div>
+      <div class="modal-foot"><button class="btn" data-close="modal">取消</button><button class="btn primary" id="energyModalConfirm">确认</button></div>
+    </section>
+  </div>
+  <div class="toast-stack" id="energyToastStack"></div>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+  <script src="js/energy.js?v=energy-alarm-rule-config-9"></script>
+</body>
+</html>

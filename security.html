@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>综合安防系统 - 高保真原型</title>
+  <link rel="stylesheet" href="css/style.css?v=inspection-task-v8">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand brand-home-link" href="index.html" title="返回智慧园区管理平台门户">
+        <div class="brand-mark">安</div>
+        <div><strong>综合安防系统</strong><span>SECURITY OPERATIONS CENTER</span></div>
+      </a>
+      <div class="topbar-center">
+        <button class="park-switch">微冷园区 <span>⌄</span></button>
+        <div class="global-search"><span>⌕</span><input placeholder="搜索人员、设备、告警编号"><kbd>⌘ K</kbd></div>
+      </div>
+      <div class="top-actions">
+        <button class="icon-button" title="消息">◉<i>6</i></button>
+        <button class="icon-button" title="帮助">?</button>
+        <button class="icon-button" title="设置">⚙</button>
+        <div class="user"><span class="avatar">张</span><div><b>张明</b><small>安防主管</small></div><span>⌄</span></div>
+      </div>
+    </header>
+    <aside class="sidebar">
+      <div class="side-caption">工作台</div>
+      <nav id="mainMenu"></nav>
+      <div class="side-footer"><div class="health-dot"></div><div><b>系统运行正常</b><span>设备在线率 96.8%</span></div></div>
+    </aside>
+    <main class="main">
+      <div class="breadcrumb" id="breadcrumb">综合安防系统 / 企业管理</div>
+      <section id="pageContainer"></section>
+      <footer>综合安防系统评审原型 · 数据更新时间 2026-07-20 10:42:16</footer>
+    </main>
+  </div>
+  <div class="overlay" id="drawerOverlay">
+    <aside class="drawer" id="drawer">
+      <div class="drawer-head"><div><span class="eyebrow">DETAIL</span><h2 id="drawerTitle">详情</h2></div><button class="close-btn" data-close="drawer">×</button></div>
+      <div class="drawer-tabs" id="drawerTabs"></div><div class="drawer-body" id="drawerBody"></div>
+      <div class="drawer-foot" id="drawerFoot"><button class="btn" data-close="drawer">关闭</button></div>
+    </aside>
+  </div>
+  <div class="overlay subdrawer-overlay" id="subDrawerOverlay">
+    <aside class="drawer subdrawer">
+      <div class="drawer-head"><div><span class="eyebrow">INSPECTION RESULT</span><h2>巡检点详情</h2></div><button class="close-btn" data-close="subDrawer">×</button></div>
+      <div class="drawer-body" id="subDrawerBody"></div><div class="drawer-foot"><button class="btn" data-close="subDrawer">关闭</button></div>
+    </aside>
+  </div>
+  <div class="overlay modal-overlay" id="modalOverlay">
+    <section class="modal" id="modal">
+      <div class="modal-head"><div><span class="eyebrow">OPERATION</span><h2 id="modalTitle">操作确认</h2></div><button class="close-btn" data-close="modal">×</button></div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-foot"><button class="btn" data-close="modal">取消</button><button class="btn primary" id="modalConfirm">确认</button></div>
+    </section>
+  </div>
+  <div class="overlay modal-overlay room-picker-overlay" id="roomPickerOverlay">
+    <section class="modal company-room-picker-modal" id="roomPickerModal">
+      <div class="modal-head"><div><span class="eyebrow">ROOM PICKER</span><h2 id="roomPickerTitle">选择房间</h2></div><button class="close-btn" data-close="roomPicker">×</button></div>
+      <div class="modal-body" id="roomPickerBody"></div>
+      <div class="modal-foot"><button class="btn" data-close="roomPicker">取消</button><button class="btn primary" id="roomPickerConfirm">确定</button></div>
+    </section>
+  </div>
+  <div class="overlay modal-overlay room-confirm-overlay" id="roomConfirmOverlay">
+    <section class="modal room-confirm-modal" id="roomConfirmModal">
+      <div class="modal-head"><div><span class="eyebrow">CONFIRM</span><h2>解绑确认</h2></div><button class="close-btn" data-close="roomConfirm">×</button></div>
+      <div class="modal-body" id="roomConfirmBody"></div>
+      <div class="modal-foot"><button class="btn" data-close="roomConfirm">取消</button><button class="btn danger" id="roomUnbindConfirm">确认解绑</button></div>
+    </section>
+  </div>
+  <div class="toast-stack" id="toastStack"></div>
+  <script src="js/prototype.js?v=device-management-v1"></script>
+</body>
+</html>

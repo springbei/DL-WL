@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>智慧园区管理平台</title>
+  <link rel="stylesheet" href="css/style.css?v=toolbar-layout-2">
+</head>
+<body class="portal-body">
+  <div class="portal-shell">
+    <header class="portal-topbar">
+      <div class="portal-brand"><span class="portal-logo">园</span><div><strong>智慧园区管理平台</strong><small>SMART PARK MANAGEMENT PLATFORM</small></div></div>
+      <div class="portal-userbar">
+        <div class="portal-clock"><b id="portalTime">--:--:--</b><span id="portalDate">----年--月--日 星期-</span></div>
+        <span class="portal-divider"></span><div class="portal-user"><span class="avatar">张</span><div><b>张明</b><small>园区管理员</small></div><span>⌄</span></div>
+      </div>
+    </header>
+    <main class="portal-main">
+      <section class="portal-welcome">
+        <span class="portal-kicker">SMART PARK · UNIFIED PORTAL</span>
+        <h1>欢迎使用智慧园区管理平台</h1>
+        <p>选择业务系统，进入园区数字化管理工作台</p>
+      </section>
+      <section class="portal-systems" aria-label="系统入口">
+        <article class="system-card featured" data-href="security.html" tabindex="0">
+          <div class="system-icon security-icon"><span>⌾</span></div>
+          <h2>综合安防系统</h2><p>统一管理园区安防告警、视频监控、周界安全、巡检巡更与安防设备。</p>
+          <button class="enter-button">进入系统 <span>→</span></button>
+        </article>
+        <article class="system-card" data-href="maintenance.html" tabindex="0">
+          <div class="system-icon facility-icon"><span>⚙</span></div>
+          <h2>设施设备运维管理系统</h2><p>面向园区设施设备提供台账、保养、维修和全生命周期运维管理。</p>
+          <button class="enter-button">进入系统 <span>→</span></button>
+        </article>
+        <article class="system-card" data-href="property.html" tabindex="0">
+          <div class="system-icon property-icon"><span>▦</span></div>
+          <h2>物业管理系统</h2><p>覆盖园区物业服务、空间管理、服务工单与日常运营协同。</p>
+          <button class="enter-button">进入系统 <span>→</span></button>
+        </article>
+        <article class="system-card" data-href="energy.html" tabindex="0">
+          <div class="system-icon energy-icon"><span>ϟ</span></div>
+          <h2>能源管理系统</h2><p>统一管理园区水、电及重点用能单元，支撑节能运行管理。</p>
+          <button class="enter-button">进入系统 <span>→</span></button>
+        </article>
+        <article class="system-card pending" data-message="系统管理原型待完善" tabindex="0">
+          <div class="system-icon admin-icon"><span>✦</span></div>
+          <h2>系统管理</h2><p>维护平台组织、用户、角色权限、基础参数与操作审计。</p>
+          <button class="enter-button">进入系统 <span>→</span></button>
+        </article>
+      </section>
+    </main>
+    <footer class="portal-footer">智慧园区管理平台 · 微冷园区</footer>
+  </div>
+  <div class="portal-toast" id="portalToast"><b>提示</b><span></span></div>
+  <script>
+    const cards=document.querySelectorAll(".system-card");
+    function activate(card){if(card.dataset.href){location.href=card.dataset.href;return;}const toast=document.getElementById("portalToast");toast.querySelector("span").textContent=card.dataset.message;toast.classList.add("show");clearTimeout(window.portalToastTimer);window.portalToastTimer=setTimeout(()=>toast.classList.remove("show"),2600);}
+    cards.forEach(card=>{card.addEventListener("click",()=>activate(card));card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();activate(card);}});});
+    function updateClock(){const now=new Date();document.getElementById("portalTime").textContent=now.toLocaleTimeString("zh-CN",{hour12:false});document.getElementById("portalDate").textContent=now.toLocaleDateString("zh-CN",{year:"numeric",month:"2-digit",day:"2-digit",weekday:"long"});}
+    updateClock();setInterval(updateClock,1000);
+  </script>
+</body>
+</html>

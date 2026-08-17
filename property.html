@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>物业管理系统 - 高保真原型</title>
+  <link rel="stylesheet" href="css/style.css?v=knowledge-doc-management-3">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand brand-home-link property-brand" href="index.html" title="返回智慧园区管理平台门户">
+        <div class="brand-mark property-mark">物</div>
+        <div><strong>物业管理系统</strong><span>PROPERTY SERVICE CENTER</span></div>
+      </a>
+      <div class="topbar-center">
+        <button class="park-switch">微冷园区 <span>⌄</span></button>
+        <div class="global-search"><span>⌕</span><input placeholder="搜索空间、人员、工单、文档"><kbd>⌘ K</kbd></div>
+      </div>
+      <div class="top-actions">
+        <button class="icon-button" title="待办">✓<i>8</i></button>
+        <button class="icon-button" title="消息">◉<i>3</i></button>
+        <button class="icon-button" title="帮助">?</button>
+        <div class="user"><span class="avatar">林</span><div><b>林晓</b><small>园区管理员</small></div><span>⌄</span></div>
+      </div>
+    </header>
+    <aside class="sidebar">
+      <div class="side-caption">物业管理与服务</div>
+      <nav id="propertyMenu"></nav>
+      <div class="side-footer"><div class="health-dot"></div><div><b>物业服务运行正常</b><span>当前园区：微冷园区</span></div></div>
+    </aside>
+    <main class="main">
+      <div class="breadcrumb" id="propertyBreadcrumb">物业管理系统 / 空间管理 / 空间管理</div>
+      <section id="propertyPage"></section>
+      <footer>物业管理系统评审原型 · 数据更新时间 2026-06-11 10:30:16</footer>
+    </main>
+  </div>
+
+  <div class="overlay" id="propertyDrawerOverlay">
+    <aside class="drawer property-drawer">
+      <div class="drawer-head property-drawer-head"><div><span class="eyebrow">PROPERTY SERVICE</span><h2 id="propertyDrawerTitle">详情</h2></div><button class="close-btn" data-close="drawer">×</button></div>
+      <div class="drawer-tabs" id="propertyDrawerTabs"></div>
+      <div class="drawer-body property-drawer-body" id="propertyDrawerBody"></div>
+      <div class="drawer-foot"><button class="btn" data-close="drawer">取消</button><button class="btn primary" id="propertyDrawerConfirm">确定</button></div>
+    </aside>
+  </div>
+  <div class="overlay modal-overlay" id="propertyModalOverlay">
+    <section class="modal property-modal">
+      <div class="modal-head"><div><span class="eyebrow">OPERATION</span><h2 id="propertyModalTitle">操作</h2></div><button class="close-btn" data-close="modal">×</button></div>
+      <div class="modal-body" id="propertyModalBody"></div>
+      <div class="modal-foot"><button class="btn" data-close="modal">取消</button><button class="btn primary" id="propertyModalConfirm">确认</button></div>
+    </section>
+  </div>
+  <div class="toast-stack" id="propertyToastStack"></div>
+  <script src="js/property.js?v=knowledge-doc-management-3"></script>
+</body>
+</html>
